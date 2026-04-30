@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import PetalsCanvas from "./components/PetalsCanvas";
 import ConfettiCanvas, { ConfettiRef } from "./components/ConfettiCanvas";
-import SoundButton from "./components/SoundButton";
 import HeroSection from "./components/HeroSection";
 import LetterSection from "./components/LetterSection";
 import AboutSection from "./components/AboutSection";
@@ -14,7 +13,6 @@ import ClosingSection from "./components/ClosingSection";
 export default function Home() {
   const confettiRef = useRef<ConfettiRef>(null);
 
-  // Intersection observer for .reveal sections
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); });
@@ -31,7 +29,6 @@ export default function Home() {
     <>
       <PetalsCanvas />
       <ConfettiCanvas ref={confettiRef} />
-      <SoundButton />
       <main>
         <HeroSection onOpen={scrollToLetter} />
         <LetterSection id="letter" />
