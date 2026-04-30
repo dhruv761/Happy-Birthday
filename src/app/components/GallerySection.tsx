@@ -7,7 +7,7 @@ const ITEMS = [
   { src: "/images/photo2.png", ph: "🧙", caption: "A Hogwarts story",         pos: "center center"  },
   { src: "/images/photo3.png", ph: "👑", caption: "Born to wear a crown",     pos: "center top"     },
   { src: "/images/photo4.png", ph: "🌸", caption: "Where it all began",       pos: "center center"  },
-  { src: "/images/photo5.png", ph: "🌿", caption: "Golden hour",              pos: "center 65%"     },
+  { src: "/images/photo5.png", ph: "📖", caption: "Fourth Wing & golden hour", pos: "center 30%"     },
 ];
 
 function GalleryItem({
