@@ -14,7 +14,7 @@ export default function HeroSection({ onOpen }: { onOpen: () => void }) {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/bouquet.jpg"
+          src="/images/bouquet.png"
           alt="Bouquet"
           className="w-full rounded-[50%_50%_40%_40%] shadow-[0_12px_40px_rgba(200,140,100,0.25)]"
           onError={(e) => {

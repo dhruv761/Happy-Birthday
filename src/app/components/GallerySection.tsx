@@ -1,11 +1,11 @@
 "use client";
 
 const PHOTOS = [
-  { src: "/images/photo1.jpg", ph: "✨" },
-  { src: "/images/photo2.jpg", ph: "🌷" },
-  { src: "/images/photo3.jpg", ph: "☀️" },
-  { src: "/images/photo4.jpg", ph: "🌙" },
-  { src: "/images/photo5.jpg", ph: "💫" },
+  { src: "/images/photo1.png", ph: "✨" },
+  { src: "/images/photo2.png", ph: "🌷" },
+  { src: "/images/photo3.png", ph: "☀️" },
+  { src: "/images/photo4.png", ph: "🌙" },
+  { src: "/images/photo5.png", ph: "💫" },
 ];
 
 function GalleryItem({ src, ph, feature }: { src: string; ph: string; feature?: boolean }) {
@@ -37,7 +37,7 @@ export default function GallerySection({ id }: { id: string }) {
         style={{ gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "auto auto" }}
       >
         {/* Feature: bouquet spans 2 rows */}
-        <GalleryItem src="/images/bouquet.jpg" ph="🌸" feature />
+        <GalleryItem src="/images/bouquet.png" ph="🌸" feature />
         {PHOTOS.map((p) => <GalleryItem key={p.src} src={p.src} ph={p.ph} />)}
       </div>
     </section>
