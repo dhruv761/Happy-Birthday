@@ -7,19 +7,26 @@ export default function SoundButton() {
 
   const toggle = () => {
     const audio = audioRef.current!;
-    if (audio.paused) { audio.play().catch(() => {}); setPlaying(true); }
-    else { audio.pause(); setPlaying(false); }
+    if (audio.paused) {
+      audio.play().catch(() => {});
+      setPlaying(true);
+    } else {
+      audio.pause();
+      setPlaying(false);
+    }
   };
 
   return (
     <>
-      <audio ref={audioRef} loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg" />
+      <audio ref={audioRef} loop preload="none">
+        {/* Romantic ambient piano — Bensound (free with attribution) */}
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" type="audio/mpeg" />
       </audio>
       <button
         onClick={toggle}
-        title="Toggle music"
-        className={`fixed top-4 right-4 z-[1000] w-10 h-10 rounded-full border text-sm cursor-pointer backdrop-blur-md transition-all ${
+        title={playing ? "Pause music" : "Play music"}
+        className={`fixed top-4 right-4 z-[1000] w-10 h-10 rounded-full border text-sm cursor-pointer backdrop-blur-md transition-all shadow-md ${
           playing
             ? "bg-[#c9a96e] text-white border-[#c9a96e]"
             : "bg-white/50 text-[#c9a96e] border-[#c9a96e] hover:bg-white/80"

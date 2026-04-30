@@ -13,20 +13,22 @@ const SURPRISES = [
 export default function SpontaneitySection({ id }: { id: string }) {
   const [text, setText] = useState("");
   const [visible, setVisible] = useState(false);
-  const lastRef = { current: -1 };
+  const lastIdx = { current: -1 };
 
   const surprise = () => {
     let idx;
-    do { idx = Math.floor(Math.random() * SURPRISES.length); } while (idx === lastRef.current);
-    lastRef.current = idx;
+    do { idx = Math.floor(Math.random() * SURPRISES.length); } while (idx === lastIdx.current);
+    lastIdx.current = idx;
     setVisible(false);
     setTimeout(() => { setText(SURPRISES[idx]); setVisible(true); }, 80);
   };
 
   return (
-    <section id={id} className="reveal py-24 px-6 text-center relative z-[1]">
-      <h2 className="font-serif-display font-normal text-center mb-10 text-[#3a2e2e]"
-        style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
+    <section id={id} className="snap-section reveal flex-col text-center px-6"
+      style={{ background: "radial-gradient(ellipse at 50% 50%, #fdf6ee 60%, #e8f0f0 100%)" }}
+    >
+      <h2 className="font-serif-display font-normal mb-8 text-[#3a2e2e]"
+        style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)" }}
       >
         A little nudge for today
       </h2>
@@ -35,7 +37,9 @@ export default function SpontaneitySection({ id }: { id: string }) {
       >
         Click for a surprise ✨
       </button>
-      <div className={`surprise-card max-w-sm mx-auto mt-8 px-10 py-8 bg-white border border-[rgba(201,169,110,0.3)] rounded-2xl font-serif-display italic text-[1.25rem] text-[#3a2e2e] shadow-[0_10px_40px_rgba(201,169,110,0.12)] flex items-center justify-center min-h-[80px] ${visible && text ? "show" : ""}`}>
+      <div className={`surprise-card mt-8 px-10 py-8 bg-white border border-[rgba(201,169,110,0.3)] rounded-2xl font-serif-display italic text-[1.2rem] text-[#3a2e2e] shadow-[0_10px_40px_rgba(201,169,110,0.12)] flex items-center justify-center ${visible && text ? "show" : ""}`}
+        style={{ minHeight: "80px", maxWidth: "420px" }}
+      >
         {text}
       </div>
     </section>

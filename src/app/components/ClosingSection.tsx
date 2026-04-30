@@ -13,7 +13,7 @@ export default function ClosingSection({ id }: { id: string }) {
         triggered.current = true;
         setShow(true);
       }
-    }, { threshold: 0.15 });
+    }, { threshold: 0.4 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -25,33 +25,32 @@ export default function ClosingSection({ id }: { id: string }) {
   ];
 
   return (
-    <section id={id} ref={ref} className="reveal min-h-screen flex items-center justify-center relative z-[1] py-16 px-6"
+    <section id={id} ref={ref} className="snap-section reveal flex-col text-center px-6"
       style={{ background: "radial-gradient(ellipse at 60% 50%, #fde8e8 0%, #fdf6ee 50%, #e8e0f0 100%)" }}
     >
-      <div className="text-center">
+      <div>
         {lines.map((line, i) => (
           <p key={i}
             className={`closing-el font-serif-display text-[#8a7a7a] leading-[1.9] ${show ? "show" : ""}`}
-            style={{ fontSize: "clamp(1.1rem, 3vw, 1.6rem)", transitionDelay: `${i * 0.35}s` }}
+            style={{ fontSize: "clamp(1.05rem, 2.8vw, 1.55rem)", transitionDelay: `${i * 0.35}s` }}
           >
             {line}
           </p>
         ))}
-        <div className={`closing-el text-[#c9a96e] text-2xl my-8 ${show ? "show" : ""}`}
+        <div className={`closing-el text-[#c9a96e] text-2xl my-6 ${show ? "show" : ""}`}
           style={{ transitionDelay: "1.1s" }}>✦</div>
         <h2 className={`closing-el font-serif-display font-light text-[#3a2e2e] ${show ? "show" : ""}`}
           style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", transitionDelay: "1.4s" }}
         >
           Happy 24th.
         </h2>
-        <p className={`closing-el font-serif-display italic text-[#8a7a7a] mt-4 ${show ? "show" : ""}`}
+        <p className={`closing-el font-serif-display italic text-[#8a7a7a] mt-3 ${show ? "show" : ""}`}
           style={{ transitionDelay: "1.8s" }}
         >
           A quiet wish that good things always find you.
         </p>
       </div>
 
-      {/* Easter egg */}
       <button
         onClick={() => setEasterOpen(true)}
         className="absolute bottom-6 right-6 text-[rgba(201,169,110,0.25)] text-sm cursor-pointer hover:text-[#c9a96e] transition-colors select-none border-0 bg-transparent"

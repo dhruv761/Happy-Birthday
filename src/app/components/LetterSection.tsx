@@ -22,32 +22,34 @@ export default function LetterSection({ id }: { id: string }) {
       if (e.isIntersecting && !triggered.current) {
         triggered.current = true;
         LINES.forEach((_, i) => {
-          setTimeout(() => setShown((prev) => { const n = [...prev]; n[i] = true; return n; }), i * 280);
+          setTimeout(() => setShown((prev) => { const n = [...prev]; n[i] = true; return n; }), i * 260);
         });
       }
-    }, { threshold: 0.15 });
+    }, { threshold: 0.4 });
     if (sectionRef.current) obs.observe(sectionRef.current);
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id={id} ref={sectionRef} className="reveal py-24 px-6 flex justify-center relative z-[1]">
-      <div className="max-w-xl w-full bg-[#fffdf8] border border-[rgba(201,169,110,0.2)] rounded-sm px-12 py-12 shadow-[0_20px_70px_rgba(150,100,80,0.1),inset_0_0_60px_rgba(253,230,200,0.15)] relative"
-        style={{ maxWidth: "640px" }}
-      >
-        <div className="flex justify-between items-center mb-8 pb-4 border-b border-[rgba(201,169,110,0.2)]">
-          <span className="font-body text-xs text-[#8a7a7a] tracking-widest">April 30, 2026</span>
-          <span className="text-[#c9a96e] text-xl">✦</span>
-        </div>
-        <div>
-          {LINES.map((line, i) => (
-            <p key={i}
-              className={`letter-line font-serif-display leading-[1.9] text-[#3a2e2e] ${i === LINES.length - 1 ? "italic text-[#c9a96e] mt-4" : ""} ${shown[i] ? "show" : ""}`}
-              style={{ fontSize: "clamp(1.05rem, 2vw, 1.2rem)" }}
-            >
-              {line}
-            </p>
-          ))}
+    <section id={id} ref={sectionRef} className="snap-section reveal"
+      style={{ background: "radial-gradient(ellipse at 50% 50%, #fdf6ee 60%, #fde8e8 100%)" }}
+    >
+      <div className="w-full px-4" style={{ maxWidth: "600px" }}>
+        <div className="bg-[#fffdf8] border border-[rgba(201,169,110,0.2)] rounded-sm px-10 py-8 shadow-[0_20px_70px_rgba(150,100,80,0.1)]">
+          <div className="flex justify-between items-center mb-6 pb-4 border-b border-[rgba(201,169,110,0.2)]">
+            <span className="font-body text-xs text-[#8a7a7a] tracking-widest">April 30, 2026</span>
+            <span className="text-[#c9a96e] text-xl">✦</span>
+          </div>
+          <div>
+            {LINES.map((line, i) => (
+              <p key={i}
+                className={`letter-line font-serif-display leading-[1.85] text-[#3a2e2e] ${i === LINES.length - 1 ? "italic text-[#c9a96e] mt-3" : ""} ${shown[i] ? "show" : ""}`}
+                style={{ fontSize: "clamp(1rem, 1.8vw, 1.15rem)" }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </section>
